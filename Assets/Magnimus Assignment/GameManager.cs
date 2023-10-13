@@ -78,15 +78,15 @@ namespace MagnimusAssignment
 
             if(waveModel.totalWaves[currentWave].RangedEnemy > rangedEnemyList.Count)       // if current ranged enemy is less add more according to current wave
             {
-                int tempListCount = tempEnemyList.Count-1;
+                int tempListCount = tempEnemyList.Count - 1;
 
                 while(ranged != waveModel.totalWaves[currentWave].RangedEnemy)
                 {
                     if(tempEnemyList.Count != 0)                                            // first add enemies from temp list
                     {
                         tempEnemyList[tempListCount].SetType(EnemyType.RangedEnemy);
-                        rangedEnemyList.Add(tempEnemyList[tempListCount - 1]);
-                        tempEnemyList.RemoveAt(tempListCount - 1);
+                        rangedEnemyList.Add(tempEnemyList[tempListCount]);
+                        tempEnemyList.RemoveAt(tempListCount);
                         tempListCount--;
                     }
                     else                                                                    // still need means create new enemies and add
@@ -100,7 +100,9 @@ namespace MagnimusAssignment
             {
                 while(rangedEnemyList.Count != waveModel.totalWaves[currentWave].RangedEnemy)
                 {
+                    GameObject tempObject = rangedEnemyList[ranged - 1].gameObject;
                     rangedEnemyList.RemoveAt(ranged - 1);
+                    Destroy(tempObject);
                     ranged--;
                 }
             }

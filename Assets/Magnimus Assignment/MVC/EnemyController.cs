@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,7 @@ namespace MagnimusAssignment
             enemyList.Add(enemyView);
             enemyView.SetController(this);
             enemyStateMachine = enemyView.enemyStateMachine;
+            enemyStateMachine.SetAttackState(enemyType);
         }
     }
 }
